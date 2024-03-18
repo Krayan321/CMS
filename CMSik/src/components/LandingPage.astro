@@ -1,0 +1,27 @@
+---
+import Card from '../components/Card.astro';
+import fetchApi from '../../lib/strapi';
+import type Restaurant from '../interfaces/restaurant';
+import { defaultErrorMap } from 'astro/zod';
+import { Debug } from 'astro:components';
+import Navbar from './Navbar.astro';
+
+const restaurants = await fetchApi<Restaurant[]>({
+  endpoint: 'restaurants', 
+  wrappedByKey: 'data', 
+});
+---
+
+<main>
+    <Navbar />
+    <ul>
+      {
+        restaurants.map((restaurant) => (
+          <li>
+              {JSON.stringify(restaurant)}
+              {restaurant.attributes.Name}
+          </li>
+        ))
+      }
+    </ul>
+  </main>

@@ -1,0 +1,172 @@
+---
+---
+<style>
+    .underline-custom {
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        color: rgb(173, 182, 195);
+        transition: color 0.3s ease-in-out;
+    }
+
+    .underline-custom::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        height: 2px;
+        width: 0;
+        border-radius: 3px;
+        background: linear-gradient(313deg, #52d5e0 0%, #00ace5 100%);
+        transition: width 0.3s ease-in-out;
+    }
+
+    .underline-custom:hover,
+    .underline-custom:focus {
+        color: rgb(36, 38, 41);
+    }
+
+    .underline-custom:hover::before,
+    .underline-custom:focus::before {
+        width: 100%;
+    }
+
+    .underline-custom-width {
+        color: rgb(36, 38, 41) !important;
+    }
+    .underline-custom-width::before {
+        width: 100%;
+        
+    }
+
+    .navbar {
+        padding-top: 1%;
+        padding-bottom: 1%;
+        margin: auto;
+    }
+
+    nav {
+        background: rgba(255, 255, 255, 1);
+        z-index: 1000;
+        border-radius: 0px 0px 24px 24px;
+        box-shadow: 0px 0px 25px 0px #2426290d;
+    }
+
+    .selected-element {
+        display: inline-block;
+        position: relative;
+    }
+
+    .selected-element:after {
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 2px;
+        position: absolute;
+        /* background: linear-gradient(313deg, #52d5e0 0%, #00ace5 100%); */
+        width: 100%;
+        left: 0;
+    }
+
+    .selected-element-animation {
+        display: inline-block;
+        position: relative;
+    }
+
+    .selected-element-animation:after {
+        /* background: none repeat scroll 0 0 transparent; */
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        /* background: linear-gradient(313deg, #52d5e0 0%, #00ace5 100%); */
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0;
+    }
+
+    .selected-element-animation:hover:after {
+        width: 100%;
+        left: 0;
+    }
+
+    .menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu {
+    display: none;
+    position: sticky;
+    left: 0;
+    width: 100%;
+    /* height: 100%; */
+    background-color: white;
+    padding: 1rem;
+    z-index: 999;
+}
+
+.menu.menu-visible {
+    display: flex;
+    background-color: white;
+}
+
+@media (min-width: 1024px) {
+    .menu.menu-visible {
+        display: none;
+    }
+}
+
+</style>
+
+<nav class="bg-white fixed w-full" style="">
+    <div class="navbar container">
+        <div class="flex flex-wrap items-center justify-between">
+
+            <div class="flex lg:order-2">
+                <a
+                target="_blank"
+                id="myButton"
+                class="log-in text-sm px-4 py-2 h-40px text-white rounded-md cursor-pointer lg:block hidden"
+                    style=" background: rgb(0,172,229);background: linear-gradient(87deg, rgba(0,172,229,1) 0%, rgba(82,213,224,1) 100%); ">
+                    Zaloguj się
+                </a>
+            </div>
+            <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1">
+                <div class="click flex flex-col space-y-4 lg:mt-0 lg:flex-row lg:space-y-0 lg:content-center lg:justify-center">
+                    <a
+                        data-target="rozwiazania"
+                        class="nav-link underline-custom text-[rgb(173,182,195)] hover:text-[rgb(36,38,41)] lg:mx-6 cursor-pointer"
+                        style="font-weight: 500;">Rozwiązania</a
+                    >
+                    <a
+                        data-target="tech"
+                        class="nav-link underline-custom text-[rgb(173,182,195)] hover:text-[rgb(36,38,41)] lg:mx-6 cursor-pointer"
+                        style="font-weight: 500;">Technologia</a
+                    >
+                    <a
+                        data-target="kon"
+                        class="nav-link underline-custom text-[rgb(173,182,195)] hover:text-[rgb(36,38,41)] lg:mx-6 cursor-pointer"
+                        style="font-weight: 500;">Kontakt</a
+                    >
+                </div>
+            </div>
+            <div class="menu h-screen hidden md:hidden flex-col text-left text-3xl justify-between">
+                <div>
+                    <div class="menu-item mt-[40px]">
+                        <a data-target="rozwiazania" class="w-full underline-custom text-[rgb(173,182,195)] hover:text-[rgb(36,38,41)] cursor-pointer" style="font-weight: 500;">Rozwiązania</a>
+                    </div>
+                    <div class="menu-item mt-[27px]">
+                        <a data-target="tech" class="w-full underline-custom text-[rgb(173,182,195)] hover:text-[rgb(36,38,41)] cursor-pointer" style="font-weight: 500;">Technologia</a>
+                    </div>
+                    <div class="menu-item mt-[27px]">
+                        <a data-target="kon" class="w-full underline-custom text-[rgb(173,182,195)] hover:text-[rgb(36,38,41)] cursor-pointer" style="font-weight: 500;">Kontakt</a>
+                    </div>
+                </div>   
+            </div>
+            
+        </div>
+    </div>
+</nav>
